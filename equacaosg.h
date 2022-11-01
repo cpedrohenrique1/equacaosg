@@ -14,6 +14,7 @@ class EquacaoSG{
         int getA();
         int getB();
         int getC();
+        bool posneg();
         double getX1();
         double getX2();
 };
@@ -58,6 +59,14 @@ int EquacaoSG::getC(){
 
 double EquacaoSG::delta(){
     return ((b*b) - (4*a*c));
+}
+
+bool EquacaoSG::posneg(){
+    if (delta() > 0){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 double EquacaoSG::getX1(){
