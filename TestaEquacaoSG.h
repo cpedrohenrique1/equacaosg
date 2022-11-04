@@ -4,7 +4,7 @@
 
 class TestaEquacaoSG{
     private:
-        EquacaoSG *Objeto;
+        EquacaoSG Objeto;
     public:
         TestaEquacaoSG();
         ~TestaEquacaoSG();
@@ -12,30 +12,36 @@ class TestaEquacaoSG{
 };
 
 TestaEquacaoSG::TestaEquacaoSG(){
-    Objeto = new EquacaoSG();
+    Objeto.setA(1);
+    Objeto.setB(2);
+    Objeto.setC(0);
 }
 
 TestaEquacaoSG::~TestaEquacaoSG(){
-    delete Objeto;
+    Objeto.setA(0);
+    Objeto.setB(0);
+    Objeto.setC(0);
 }
 
 void TestaEquacaoSG::menu(){
-    int entrada;
+    double entrada;
     int flag;
     do{
         do{
-            cout << "insira A: ";
-            cin >> entrada;
-            Objeto->setA(entrada);
+            do{
+                cout << "insira A: ";
+                cin >> entrada;
+                Objeto.setA(entrada);
+            }while (Objeto.setA(entrada) == false);
             cout << "insira B: ";
             cin >> entrada;
-            Objeto->setB(entrada);
+            Objeto.setB(entrada);
             cout << "insira C: ";
             cin >> entrada;
-            Objeto->setC(entrada);
-        }while(Objeto->posneg() == false);
-        cout << "X1 " << Objeto->getX1() << "\n";
-        cout << "X2 " << Objeto->getX2() << "\n";
+            Objeto.setC(entrada);
+        }while(Objeto.raizes() == nullptr);
+        cout << "X1 = " << Objeto.raizes()[0] << endl;
+        cout << "X2 = " << Objeto.raizes()[1] << endl;
         cout << "digite 0 para encerrar\n";
         cin >> flag;
     }while(flag !=0 );

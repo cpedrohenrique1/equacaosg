@@ -3,20 +3,18 @@
 
 class EquacaoSG{
     private:
-        int a, b, c;
-        double delta();
+        double a, b, c;
+        double delta()const;
     public:
         EquacaoSG();
         ~EquacaoSG();
-        void setA(int);
-        void setB(int);
-        void setC(int);
-        int getA();
-        int getB();
-        int getC();
-        bool posneg();
-        double getX1();
-        double getX2();
+        bool setA(double);
+        void setB(double);
+        void setC(double);
+        double getA()const;
+        double getB()const;
+        double getC()const;
+        double *raizes()const;
 };
 
 
@@ -33,48 +31,46 @@ EquacaoSG::~EquacaoSG(){
     c = 0;
 }
 
-void EquacaoSG::setA(int aux){
+bool EquacaoSG::setA(double aux){
+    if (aux == 0){
+        return false;
+    }
     a = aux;
+    return true;
 }
 
-void EquacaoSG::setB(int aux){
+void EquacaoSG::setB(double aux){
     b = aux;
 }
 
-void EquacaoSG::setC(int aux){
+void EquacaoSG::setC(double aux){
     c = aux;
 }
 
-int EquacaoSG::getA(){
+double EquacaoSG::getA()const{
     return a;
 }
 
-int EquacaoSG::getB(){
+double EquacaoSG::getB()const{
     return b;
 }
 
-int EquacaoSG::getC(){
+double EquacaoSG::getC()const{
     return c;
 }
 
-double EquacaoSG::delta(){
+double EquacaoSG::delta()const{
     return ((b*b) - (4*a*c));
 }
 
-bool EquacaoSG::posneg(){
-    if (delta() > 0){
-        return true;
-    }else{
-        return false;
+double *EquacaoSG::raizes()const{
+    if (delta() < 0){
+        return nullptr;
     }
-}
-
-double EquacaoSG::getX1(){
-    return ((-b + sqrt(delta()))/(2*a));
-}
-
-double EquacaoSG::getX2(){
-    return ((-b - sqrt(delta()))/(2*a));
+    double *v = new double[2];
+    v[0] = (-b + sqrt(delta()))/(2*a);
+    v[1] = (-b - sqrt(delta()))/(2*a);
+    return v;
 }
 
 #endif
