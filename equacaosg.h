@@ -14,7 +14,8 @@ class EquacaoSG{
         double getA()const;
         double getB()const;
         double getC()const;
-        double *raizes()const;
+        double *MostrarEquacao()const;
+        void *MostrarEquacao(double*,double*,double*);
 };
 
 EquacaoSG::EquacaoSG(){
@@ -62,7 +63,7 @@ double EquacaoSG::delta()const{
     return ((b*b) - (4*a*c));
 }
 
-double *EquacaoSG::raizes()const{
+double *EquacaoSG::MostrarEquacao()const{
     if (delta() < 0){
         throw string("Delta negativo");
         return nullptr;
@@ -71,6 +72,12 @@ double *EquacaoSG::raizes()const{
     v[0] = (-b + sqrt(delta()))/(2*a);
     v[1] = (-b - sqrt(delta()))/(2*a);
     return v;
+}
+
+void *EquacaoSG::MostrarEquacao(double *a, double *b, double *c){
+    *a = getA();
+    *b = getB();
+    *c = getC();
 }
 
 #endif

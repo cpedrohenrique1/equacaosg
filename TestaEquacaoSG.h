@@ -24,8 +24,12 @@ void TestaEquacaoSG::menu(){
             cin >> entrada;
             Objeto.setC(entrada);
 
-            cout << "X1 = " << Objeto.raizes()[0] << endl;
-            cout << "X2 = " << Objeto.raizes()[1] << endl;
+            cout << "X1 = " << Objeto.MostrarEquacao()[0] << endl;
+            cout << "X2 = " << Objeto.MostrarEquacao()[1] << endl;
+
+            double a,b,c;
+            Objeto.MostrarEquacao(&a, &b, &c);
+            cout << "Equacao: " << a << "x²+" << b << "x+" << c << " = 0" << endl;
         }
         catch (string error){
             cout << "Erro: " << error << endl;
