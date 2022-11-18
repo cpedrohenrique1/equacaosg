@@ -17,8 +17,6 @@ class EquacaoSG{
         double *raizes()const;
 };
 
-
-
 EquacaoSG::EquacaoSG(){
     a = 1;
     b = 2;
@@ -33,6 +31,7 @@ EquacaoSG::~EquacaoSG(){
 
 bool EquacaoSG::setA(double aux){
     if (aux == 0){
+        throw string("A nao pode ser 0");
         return false;
     }
     a = aux;
@@ -65,6 +64,7 @@ double EquacaoSG::delta()const{
 
 double *EquacaoSG::raizes()const{
     if (delta() < 0){
+        throw string("Delta negativo");
         return nullptr;
     }
     double *v = new double[2];

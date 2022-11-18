@@ -6,45 +6,33 @@ class TestaEquacaoSG{
     private:
         EquacaoSG Objeto;
     public:
-        TestaEquacaoSG();
-        ~TestaEquacaoSG();
         void menu();
 };
-
-TestaEquacaoSG::TestaEquacaoSG(){
-    Objeto.setA(1);
-    Objeto.setB(2);
-    Objeto.setC(0);
-}
-
-TestaEquacaoSG::~TestaEquacaoSG(){
-    Objeto.setA(0);
-    Objeto.setB(0);
-    Objeto.setC(0);
-}
 
 void TestaEquacaoSG::menu(){
     double entrada;
     int flag;
     do{
-        do{
-            do{
-                cout << "insira A: ";
-                cin >> entrada;
-                Objeto.setA(entrada);
-            }while (Objeto.setA(entrada) == false);
+        try{
+            cout << "insira A: ";
+            cin >> entrada;
+            Objeto.setA(entrada);
             cout << "insira B: ";
             cin >> entrada;
             Objeto.setB(entrada);
             cout << "insira C: ";
             cin >> entrada;
             Objeto.setC(entrada);
-        }while(Objeto.raizes() == nullptr);
-        cout << "X1 = " << Objeto.raizes()[0] << endl;
-        cout << "X2 = " << Objeto.raizes()[1] << endl;
+
+            cout << "X1 = " << Objeto.raizes()[0] << endl;
+            cout << "X2 = " << Objeto.raizes()[1] << endl;
+        }
+        catch (string error){
+            cout << "Erro: " << error << endl;
+        }
         cout << "digite 0 para encerrar\n";
         cin >> flag;
-    }while(flag !=0 );
+    }while(flag != 0);
 }
 
 #endif
